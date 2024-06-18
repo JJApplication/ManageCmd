@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 
-cd "${APP_ROOT}/${APP}" || exit "${APP_STATUS_ERR}"
-
-"${APP_ROOT}"/NoEngine/noengined -stat "${APP}"
-result=$?
-if [[ $result != 0 ]];then
-  exit "${APP_STATUS_ERR}"
-else
+status=$(ps ax|grep -w "${APP}"|grep -v zeus|grep -v grep|grep -v .sh)
+if [[ -n ${status} ]];then
   exit 0
+else
+  exit "${APP_STATUS_ERR}"
 fi
-
-exit 0

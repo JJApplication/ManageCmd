@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-cd "${APP_ROOT}/${APP}" || exit "${APP_STOP_ERR}"
 
 for i in {1..10}
 do
@@ -15,11 +14,3 @@ do
     fi
   fi
 done
-
-"${APP_ROOT}"/NoEngine/noengined -stop "${APP}"
-result=$?
-if [[ $result != 0 ]];then
-  exit "${APP_STOP_ERR}"
-else
-  exit 0
-fi
